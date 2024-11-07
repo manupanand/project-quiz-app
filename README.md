@@ -1,4 +1,4 @@
-## Quiz Application
+# Quiz Application
 
 This is a simple quiz application built using Node.js and Express. It provides a platform for users to take quizzes and view their results.
 Features
@@ -7,25 +7,25 @@ Features
     Timed Questions: Option to add time limits to questions.
     Score Calculation: Automatically calculates and displays the score upon quiz completion.
 
-# Prerequisites
+### Prerequisites
 
     Node.js: Ensure you have Node.js installed. You can download it here.
     npm: Node Package Manager is required to install dependencies.
 
-# Installation
+### Installation
 
     Clone the repository:
 
 git clone https://github.com/manupanand/project-quiz-app.git
 cd project-quiz-app
 
-# Install dependencies:
+### Install dependencies:
 
     ```
     npm install
     ```
 
-# Running the Application
+### Running the Application
 
 To start the server, run:
 
@@ -43,6 +43,6 @@ Project Structure
     /public: Static files (e.g., CSS, JavaScript).
     /views: Frontend templates for the quiz interface.
 
-# License
+## License
 
 This project is licensed under the GPL-3.0 License.
