@@ -8,6 +8,6 @@ app.get('/',(req,res)=>{
     })
 })
 
-app.listen('3000',()=>{
-    console.log("app listening to port 3000")
+app.listen('1500',()=>{
+    console.log("app listening to port 1500")
 })
