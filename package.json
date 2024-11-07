@@ -1,0 +1,19 @@
+{
+  "name": "quiz-app-express-server",
+  "version": "1.0.0",
+  "description": "quiz-app using express.js",
+  "main": "main.js",
+  "scripts": {
+    "test": "node ./server/main.js",
+    "server":"node ./server/main.js"
+  },
+  "keywords": [
+    "express",
+    "node",
+    "aws",
+    "quiz",
+    "backend"
+  ],
+  "author": "manu p anand",
+  "license": "GPL-3.0"
+}
