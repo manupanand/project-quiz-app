@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "test": "node ./server/main.js",
-    "server":"node ./server/main.js"
+    "server": "node ./server/main.js"
   },
   "keywords": [
     "express",
@@ -15,5 +15,8 @@
     "backend"
   ],
   "author": "manu p anand",
-  "license": "GPL-3.0"
+  "license": "GPL-3.0",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
 }
