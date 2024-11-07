@@ -40,11 +40,11 @@ This will launch the application at http://localhost:3000 by default.
 
 ### Project Structure
 
-    -routes: Contains application routes.
-    -controllers: Contains logic for handling quiz data.
-    -models: Defines data structure (if using a database).
-    -public: Static files (e.g., CSS, JavaScript).
-    -views: Frontend templates for the quiz interface.
+-routes: Contains application routes.
+-controllers: Contains logic for handling quiz data.
+-models: Defines data structure (if using a database).
+-public: Static files (e.g., CSS, JavaScript).
+-views: Frontend templates for the quiz interface.
 
 ## License
 
