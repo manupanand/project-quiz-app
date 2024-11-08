@@ -9,6 +9,12 @@ app.get('/',(req,res)=>{
     })
 })
 
+app.get('/route',(req,res)=>{
+    res.json({
+        message:"new route test"
+    })
+})
+
 app.listen('2500','0.0.0.0',()=>{
     console.log("app listening to port 2500")
 })
