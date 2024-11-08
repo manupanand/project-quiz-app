@@ -4,7 +4,7 @@ const cors=require('cors')
 require('dotenv').config()
 
 //module import
-const {databaseConnection}=require('../config/db')
+const {databaseConnection}=require('./config/db')
 
 //middle ware
 app.use(cors())
