@@ -29,14 +29,15 @@ jobs:
 
     - run: | 
         npm ci
-        touch .env
-        echo "${{secrets.PROD_ENV_FILE}}" > .env
+     
         pm2 stop all
         pm2 delete all
         pm2 kill
         npm install
         pm2 start /home/ubuntu/actions-runner/_work/project-quiz-app/project-quiz-app/src/index.js --name "quizapp" || pm2 restart "quizapp"
         pm2 save
+        touch .env
+        echo "${{secrets.PROD_ENV_FILE}}" > .env
 
       # Start or restart the app with PM2
 

@@ -5,7 +5,8 @@ require('dotenv').config()
 const logger=require('./config/logger')
 const {databaseConnection}=require('./config/db')
 const warningLogger=require('./config/warning_logger')
-
+//test
+const rootRouter=require('./routes/index')
 //middle ware
 app.use(cors())
 app.use(express.json())
@@ -21,8 +22,8 @@ warningLogger()
 
 
 //Routes
+app.use('/test2',rootRouter)
 
-app.use('user/login')
 app.get('/',(req,res)=>{
     res.json({
         message:"new update test"
