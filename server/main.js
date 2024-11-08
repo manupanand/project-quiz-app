@@ -5,7 +5,7 @@ const cors=require('cors')
 app.use(cors())
 app.get('/',(req,res)=>{
     res.json({
-        message:"got main route"
+        message:"new update test"
     })
 })
 
