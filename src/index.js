@@ -2,13 +2,23 @@ const express=require("express")
 const app=express()
 const cors=require('cors')
 require('dotenv').config()
-
-//module import
+const logger=require('./config/logger')
 const {databaseConnection}=require('./config/db')
+const warningLogger=require('./config/warning_logger')
 
 //middle ware
 app.use(cors())
 app.use(express.json())
+const morgan_log=require('./middleware/loggerMiddleware')
+
+// logger middleware
+
+app.use(morgan_log)
+warningLogger()
+//database connection initialising
+ databaseConnection()
+
+
 
 //Routes
 app.get('/',(req,res)=>{
@@ -23,12 +33,12 @@ app.get('/route',(req,res)=>{
     })
 })
 app.get('/test',async(req,res,next)=>{
-    await databaseConnection();
+  
     res.json({
         message:"connecting to database"
     })
 })
-
+//server 
 app.listen('2500','0.0.0.0',()=>{
-    console.log("app listening to port 2500")
+    logger.info("Server started listening to port 2500")
 })
