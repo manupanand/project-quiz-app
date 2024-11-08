@@ -21,6 +21,8 @@ warningLogger()
 
 
 //Routes
+
+app.use('user/login')
 app.get('/',(req,res)=>{
     res.json({
         message:"new update test"
