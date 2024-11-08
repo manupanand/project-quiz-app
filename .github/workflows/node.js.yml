@@ -29,7 +29,7 @@ jobs:
     - run: | 
         npm ci
         npm install
-        pm2 start /actions-runner/_work/project-quiz-app/project-quiz-app/server/main.js --name "quizapp" || pm2 restart "quizapp"
+        pm2 start /home/ubuntu/actions-runner/_work/project-quiz-app/project-quiz-app/server/main.js --name "quizapp" || pm2 restart "quizapp"
         pm2 save
 
       # Start or restart the app with PM2
