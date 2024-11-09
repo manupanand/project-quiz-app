@@ -22,7 +22,7 @@ warningLogger()
 
 
 //Routes
-app.use('/test',rootRouter)
+app.use('/',rootRouter)
 
 app.get('/',(req,res)=>{
     res.json({
