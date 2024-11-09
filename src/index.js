@@ -22,7 +22,7 @@ warningLogger()
 
 
 //Routes
-app.use('/test2',rootRouter)
+app.use('/test',rootRouter)
 
 app.get('/',(req,res)=>{
     res.json({
@@ -30,7 +30,7 @@ app.get('/',(req,res)=>{
     })
 })
 
-app.get('/route',(req,res)=>{
+app.get('/user',(req,res)=>{
     res.json({
         message:"new route test"
     })
