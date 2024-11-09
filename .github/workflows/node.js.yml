@@ -27,27 +27,31 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
 
-    - run: | 
+    - run: |
         npm ci
-     
-        pm2 stop all
-        pm2 delete all
+        echo "${{ secrets.PROD_ENV_FILE }}" > .env
+        pm2 stop quizapp || true 
+        pm2 delete quizapp || true
         pm2 kill
         npm install
-        pm2 start /home/ubuntu/actions-runner/_work/project-quiz-app/project-quiz-app/src/index.js --name "quizapp" || pm2 restart "quizapp"
+        pm2 start /home/ubuntu/actions-runner/_work/project-quiz-app/project-quiz-app/src/index.js --name "quizapp"
         pm2 save
-        touch .env
-        echo "${{secrets.PROD_ENV_FILE}}" > .env
-
-      # Start or restart the app with PM2
-
-        #pm2 start /actions-runner/_work/project-quiz-app/project-quiz-app/server/main.js --name "quizapp" || pm2 restart "quizapp"
-
-    # Save the PM2 process list (optional)
-        #pm2 save
-    # - run: npm run build --if-present
-    # - run: npm test
-    # - run: |
-    #    touch .env
-    #    echo "${{secrets.PROD_ENV_FILE}}" > .env
-    
+      # # Ensure dependencies are up-to-date
+      # npm ci
+      
+      # # Write the environment variables from GitHub secrets into the .env file
+      # echo "${{ secrets.PROD_ENV_FILE }}" > .env
+      
+      # # Stop, delete, and kill any existing PM2 processes to ensure a clean start
+      # pm2 stop quizapp || true # Avoid error if "quizapp" is not already running
+      # pm2 delete quizapp || true
+      # pm2 kill
+      
+      # # Install any additional dependencies
+      # npm install
+      
+      # # Start the PM2 process for the quiz app, using the main app entry point
+      # pm2 start /home/ubuntu/actions-runner/_work/project-quiz-app/project-quiz-app/src/index.js --name "quizapp"
+      
+      # # Save the PM2 process list to restart on reboot if needed
+      # pm2 save
