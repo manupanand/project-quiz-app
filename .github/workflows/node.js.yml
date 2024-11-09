@@ -34,7 +34,7 @@ jobs:
         pm2 delete quizapp || true
         pm2 kill
         npm install
-        pm2 start /home/ubuntu/actions-runner/_work/project-quiz-app/project-quiz-app/src/index.js --name "quizapp"
+        pm2 start /home/ubuntu/actions-runner/_work/project-quiz-app/project-quiz-app/src/index.js --name "quizapp" || pm2 restart "quizapp"
         pm2 save
       # # Ensure dependencies are up-to-date
       # npm ci
