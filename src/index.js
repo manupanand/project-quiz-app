@@ -2,6 +2,7 @@ const express=require("express")
 const app=express()
 const cors=require('cors')
 require('dotenv').config()
+const bodyParser=require('body-parser')
 const logger=require('./config/logger')
 const {databaseConnection}=require('./config/db')
 const warningLogger=require('./config/warning_logger')
@@ -10,7 +11,10 @@ const rootRouter=require('./routes/index')
 //middle ware
 app.use(cors())
 app.use(express.json())
+app.use(bodyParser.json({limit:'50mb'}))
+app.use(bodyParser.urlencoded({limit:'50mb',extended:true}))
 const morgan_log=require('./middleware/loggerMiddleware')
+const bodyParser = require("body-parser")
 
 // logger middleware
 
@@ -21,8 +25,10 @@ warningLogger()
 
 
 
-//Routes
+//test Routes
 app.use('/',rootRouter)
+
+//prod router
 
 app.get('/',(req,res)=>{
     res.json({
