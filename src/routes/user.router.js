@@ -1,20 +1,18 @@
 const express=require('express')
-const {userSignup}=require('../controllers/signupController')
+const {userSignUp}=require('../controllers/signupController')
 const router=express.Router()
-// const quizRouter=require('./quiz.router')
+const quizRouter=require('./quiz.router')
+const {isAuthenticated}=require('../middleware/authentication.middleware')
 
 
 
-// router.get('/signin',(req,res)=>{
-//     res.render('signin.ejs')
-// })
-// router.get('/signup',(req,res)=>{
-//     res.render('signup.ejs')
-// })
-router.post('/signup',userSignup)
+// user sign up route
+router.post('/signup',userSignUp)
+//user sif=gn in route
 router.post('/signin',(req,res)=>{
     
 })
-// router.use('/question',quizRouter)
+// route for questions
+ router.use('/question',isAuthenticated,quizRouter)
 module.exports=router
 

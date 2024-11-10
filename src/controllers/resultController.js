@@ -1,0 +1,3 @@
+//get result
+
+//getAllresult

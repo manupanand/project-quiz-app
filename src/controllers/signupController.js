@@ -1,4 +1,4 @@
-// creating first database of user/admin /signup /signin 
+// creating first database of user/admin /signup 
 const logger=require('../config/logger')
 const inputValidate=require('../config/inputValidation')
 const {User}=require('../model/user.models')
@@ -15,7 +15,7 @@ const jwtKey=process.env.JWT_SECRET_KEY
 
 
 
-const userSignup=async (req,res)=>{
+const userSignUp=async (req,res)=>{
     //variable
     let encryptPassword,userId,token
   try{
@@ -127,7 +127,7 @@ const userSignup=async (req,res)=>{
     });
   }
 }
-const adminSignup= async(req,res)=>{
+const adminSignUp= async(req,res)=>{
     let encryptPassword,userId,token
   try{
     
@@ -239,4 +239,4 @@ const adminSignup= async(req,res)=>{
   }
 }
 
-module.exports={userSignup,adminSignup}
+module.exports={userSignUp,adminSignUp}

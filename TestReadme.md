@@ -34,16 +34,18 @@
   "question": "What is the capital of France?",
   "answer": ["Berlin", "Madrid", "Paris", "Rome"],
   "correctAnswer": "Paris",
-  "createdBy": { "$oid": "6730469b56b7541e4d418b4a" },  // Replace with actual Admin ObjectId
+  
  
 },
 {
         "question": "What is the capital of Israel?",
         "answer": ["London", "Washington", "Sydney", "Tel Aviv"],
         "correctAnswer": "Tel Aviv",
-        "createdBy": new mongoose.Types.ObjectId("6730469b56b7541e4d418b4a") // Use actual Admin ObjectId here
-    
+        
+}  
 ```
+sample question  is post request -use beare token of admin as header
+
 answers = [
             {
                 questionId: mongoose.Types.ObjectId("questionId1"), // Replace with an actual questionId
