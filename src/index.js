@@ -6,27 +6,31 @@ const bodyParser=require('body-parser')
 const logger=require('./config/logger')
 const {databaseConnection}=require('./config/db')
 const warningLogger=require('./config/warning_logger')
-//test
+const morgan_log=require('./middleware/loggerMiddleware')
+
+//routes
 const rootRouter=require('./routes/index')
+// Set the view engine to EJS and specify the views directory
+app.set('view engine', 'ejs');
+app.set('views', './src/views');
+
 //middle ware
 app.use(cors())
 app.use(express.json())
 app.use(bodyParser.json({limit:'50mb'}))
 app.use(bodyParser.urlencoded({limit:'50mb',extended:true}))
-const morgan_log=require('./middleware/loggerMiddleware')
-const bodyParser = require("body-parser")
+
 
 // logger middleware
-
 app.use(morgan_log)
 warningLogger()
 //database connection initialising
- databaseConnection()
+databaseConnection()
 
 
 
 //test Routes
-app.use('/',rootRouter)
+ app.use('/',rootRouter)
 
 //prod router
 

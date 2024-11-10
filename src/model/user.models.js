@@ -1,4 +1,5 @@
 const mongoose=require('mongoose')
+const { boolean } = require('zod')
 
 //schema for user
 
@@ -11,6 +12,13 @@ const userSchema=new mongoose.Schema({
             lowercase:true,
             minLength:5,
             maxLength:30
+        },
+        email:{
+            type:String,
+            required:true,
+            trim:true,
+            maxLength:50,
+            minLength:6
         },
         password:{
             type:String,
@@ -32,7 +40,11 @@ const userSchema=new mongoose.Schema({
             trim:true,
             maxLength:50,
 
-        },createdAt:{
+        },
+        privilege:{type:Boolean,
+            default:false
+        },
+        createdAt:{
             type:Date,
             default:Date.now,
         }
