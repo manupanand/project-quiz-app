@@ -2,8 +2,9 @@ const mongoose =require('mongoose')
 require('dotenv').config()
 const logger= require('../config/logger')
 
-// environment variable to connect to database 
-const mongoURL= process.env.MONGO_LOCAL|| process.env.MONGO_ATLAS
+// environment variable to connect to database  process.env.MONGO_LOCAL||
+const mongoURL= process.env.MONGO_ATLAS
+
 //database connection-mongodb
 const databaseConnection= async()=>{
     try{

@@ -2,6 +2,7 @@
 
 const {validateToken}=require('../config/jwt')
 const logger=require('../config/logger')
+const {Admin}=require('../model/admin.models')
 
 require('dotenv').config()
 const jwtKey=process.env.JWT_SECRET_KEY

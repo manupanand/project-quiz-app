@@ -35,6 +35,22 @@
   "answer": ["Berlin", "Madrid", "Paris", "Rome"],
   "correctAnswer": "Paris",
   "createdBy": { "$oid": "6730469b56b7541e4d418b4a" },  // Replace with actual Admin ObjectId
-  "createdAt": { "$date": "2024-11-10T12:00:00Z" }
-}
+ 
+},
+{
+        "question": "What is the capital of Israel?",
+        "answer": ["London", "Washington", "Sydney", "Tel Aviv"],
+        "correctAnswer": "Tel Aviv",
+        "createdBy": new mongoose.Types.ObjectId("6730469b56b7541e4d418b4a") // Use actual Admin ObjectId here
+    
 ```
+answers = [
+            {
+                questionId: mongoose.Types.ObjectId("questionId1"), // Replace with an actual questionId
+                selectedAnswer: "Paris"
+            },
+            {
+                questionId: mongoose.Types.ObjectId("questionId2"), // Replace with another questionId
+                selectedAnswer: "Madrid"
+            }
+        ];

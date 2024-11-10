@@ -20,28 +20,78 @@ require('dotenv').config()
 // const app=express()
 const { databaseConnection } = require('./src/config/db');
 const Question = require('./src/model/question.models');
+const Answer=require('./src/model/useranswer.models');
 const mongoose = require('mongoose');
 //database connection initialising
 // Initialize database connection
 databaseConnection();
 
-async function addQuestion() {
-    const questionData = {
-        "question": "What is the capital of Israel?",
-        "answer": ["London", "Washington", "Sydney", "Tel Aviv"],
-        "correctAnswer": "Tel Aviv",
-        "createdBy": new mongoose.Types.ObjectId("6730469b56b7541e4d418b4a") // Use actual Admin ObjectId here
-    };
+// async function addQuestion() {
+//     const questionData = {
+//         "question": "What is the capital of Israel?",
+//         "answer": ["London", "Washington", "Sydney", "Tel Aviv"],
+//         "correctAnswer": "Tel Aviv",
+//         "createdBy": new mongoose.Types.ObjectId("6730469b56b7541e4d418b4a") // Use actual Admin ObjectId here
+//     };
 
+//     try {
+//         await Question.create(questionData);
+//         console.log("Question added successfully!");
+//     } catch (error) {
+//         console.error("Error adding question:", error);
+//     }
+// }
+
+// addQuestion();
+
+
+
+async function createAnswerDocument() {
     try {
-        await Question.create(questionData);
-        console.log("Question added successfully!");
+        // Assume we are working with a user with _id 'userId' and some questions with _id
+        const userId = new mongoose.Types.ObjectId("67306af482bf7e71c0409b81"); // Replace with actual userId
+
+        // Prepare the answers for the user (you should have existing question Ids)
+        const answers = [
+            {
+                questionId:new  mongoose.Types.ObjectId("6730900b37636904363432f8"), // Replace with an actual questionId
+                selectedAnswer: "Paris"
+            },
+            {
+                questionId: new mongoose.Types.ObjectId("6730928a6988404d8aa1c982"), // Replace with another questionId
+                selectedAnswer: "Madrid"
+            },
+            {
+                questionId: new mongoose.Types.ObjectId("673092b44e7c9ee02b50f1d3"), // Replace with another questionId
+                selectedAnswer: "Moscow"
+            },
+            {
+                questionId: new mongoose.Types.ObjectId("6730935c19c44f36c5b029f6"), // Replace with another questionId
+                selectedAnswer: "Sydney"
+            },
+            {
+                questionId:new  mongoose.Types.ObjectId("6730948f0f0dec0577e34ce8"), // Replace with another questionId
+                selectedAnswer: "Tel Aviv"
+            }
+        ];
+
+        // Create the answer document
+        const answerDocument = new Answer({
+            userId: userId,
+            answers: answers
+        });
+
+        // Save the document to the database
+        const savedAnswer = await answerDocument.save();
+        console.log("Answer document created:", savedAnswer);
     } catch (error) {
-        console.error("Error adding question:", error);
+        console.error("Error creating answer document:", error);
     }
 }
 
-addQuestion();
+createAnswerDocument();
+
+
 // const passport=require('passport')
 
 // //local variable
