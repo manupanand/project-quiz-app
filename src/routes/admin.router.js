@@ -1,11 +1,11 @@
 const express=require('express')
 const router=express.Router()
 const {adminSignup}=require('../controllers/signupController')
+const quizRouter=require('./quiz.router')
 
 
-router.get('/testsign',(req,res)=>{
-    res.json({message:"new admin route got"})
-})
+
+
 router.get('/signin',(req,res)=>{
     res.render('signin.ejs')
 })
@@ -19,4 +19,5 @@ router.post('/signin',(req,res)=>{
 router.post('/update',(req,res)=>{
     
 })
+router.use('/question',quizRouter)
 module.exports= router

@@ -4,8 +4,11 @@ const jwtToken=require('jsonwebtoken')
 
 const generateToken=(header,secretKey)=>{
     try{
+        if(!header.userId){
+            logger.error("Missing userId in token Header")
+        }
         const token=jwtToken.sign(header,secretKey)
-        logger.info(" Token generated success")
+        logger.info(" Token generated successfully")
         return token
     }catch(error){
         logger.error("Error in generating token",error)
@@ -16,7 +19,7 @@ const generateToken=(header,secretKey)=>{
 const validateToken=(token,secretKey)=>{
     try{
         const verify=jwtToken.verify(token,secretKey)
-        logger.info("Token validated success")
+        logger.info("Token validated successfully")
         return verify
     }catch(error){
         logger.error("Error in verifying token",error)

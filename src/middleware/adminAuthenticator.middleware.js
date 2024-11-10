@@ -1,3 +1,4 @@
+//uthenticato privilege and check token
 
 const {validateToken}=require('../config/jwt')
 const logger=require('../config/logger')

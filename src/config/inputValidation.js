@@ -11,7 +11,7 @@ const inputvalidate=(input)=>{
 
     try{
         const validate=signupBody.safeParse(input)
-        logger.info("Input is validated success")
+        logger.info("Input valid is returned")
         return validate
      }catch(error){
         logger.error(" Error in input validation",error)

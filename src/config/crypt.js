@@ -4,7 +4,7 @@ const logger=require('./logger')
 const  encrypt=(password,key)=>{
     try{
         const encryptedText= encryptDecrypt.AES.encrypt(password,key).toString()
-        logger.info("Encryption success")
+        logger.info("Encryption successful")
         return encryptedText
     }catch(error){
         logger.error("Error in encryption ",error)
@@ -16,7 +16,7 @@ const  encrypt=(password,key)=>{
 const decrypt=(encrypted_password,key)=>{
        try{
         const decryptedText=encryptDecrypt.AES.decrypt(encrypted_password,key).toString(encryptDecrypt.enc.Utf8)
-        logger.info("Decrypting success")
+        logger.info("Decrypting successful")
         return decryptedText
         }catch(error){
         logger.error("Error in decrypting",error)
