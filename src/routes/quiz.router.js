@@ -1,17 +1,16 @@
 const express=require('express')
 const {question}=require('../controllers/questionController')
 const { isAuthenticated } = require('../middleware/authentication.middleware')
-const router=express.Router()
-
+const router = express.Router();
+const quizController = require("../controllers/questionController");
 
 router.get('/',(req,res)=>{
 res.json({
     message:"got question from db"
 })
 })
-const express = require("express");
-const router = express.Router();
-const quizController = require("../controllers/quizController");
+
+
 
 // Define routes and attach controller functions
 router.post("/question", quizController.createQuestion); // Create a question
