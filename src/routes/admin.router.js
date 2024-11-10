@@ -6,12 +6,12 @@ const quizRouter=require('./quiz.router')
 
 
 
-router.get('/signin',(req,res)=>{
-    res.render('signin.ejs')
-})
-router.get('/signup',(req,res)=>{
-    res.render('signup.ejs')
-})
+// router.get('/signin',(req,res)=>{
+//     res.render('signin.ejs')
+// })
+// router.get('/signup',(req,res)=>{
+//     res.render('signup.ejs')
+// })
 router.post('/signup',adminSignup)
 router.post('/signin',(req,res)=>{
     
