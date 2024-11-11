@@ -1,5 +1,4 @@
 const express=require('express')
-const {question}=require('../controllers/questionController')
 const answerController=require('../controllers/answerController')
 const router = express.Router();
 
