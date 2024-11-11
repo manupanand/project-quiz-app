@@ -9,11 +9,13 @@ const jwtKey=process.env.JWT_SECRET_KEY
 
 const isAdminAuthenticated=async (req,res,next)=>{
     const validHeader=req.headers.authorization
+   
     try{
         // Check if the authorization header is present and starts with 'Bearer'
         if(!validHeader||!validHeader.startsWith('Bearer')){
+            logger.error("Invalid user -Authorization header missing or incorrect")
             return res.status(403).json({
-                message:"Not avalid user "
+                message:"Not avalid user -Authorization header missing or incorrect"
             })
         }
         // Extract token (split with a space to correctly get the token part)
@@ -24,13 +26,16 @@ const isAdminAuthenticated=async (req,res,next)=>{
             const adminUser= await Admin.findOne({
                 _id :decoded.userId
             })// checking privilege -true
-            if(adminUser.privilege){
+            if(adminUser&&adminUser.privilege){
                 req.userId=decoded.userId
                 logger.info("User is admin access is granted")
-                next()
+                return next()
                 
             }else{
                 logger.warn("No access - not admin user")
+                return res.status(403).json({
+                    message: "Access denied - not an admin user",
+                });
             }
             
 

@@ -1,21 +1,21 @@
 const express=require('express')
-const {question}=require('../controllers/questionController')
-const { isAuthenticated } = require('../middleware/authentication.middleware')
 const {isAdminAuthenticated}=require("../middleware/adminAuthenticator.middleware")
 
 const router = express.Router();
 const quizController = require("../controllers/questionController");
 
-//get all question
+//get all question admin/user
 router.get('/all',quizController.getQuestions)
 
 //  Create question -only admin
-router.post('/update',isAdminAuthenticated,quizController.createQuestion)
+router.post('/create',isAdminAuthenticated,quizController.createQuestion)
 
 //delet a question -only admin
-router.delete('/:id',isAdminAuthenticated,quizController.deleteQuestion)
+ router.delete('/delete',isAdminAuthenticated,quizController.deleteQuestion)
 
 //update a question -id only admin
-router.put('/:id',isAdminAuthenticated,quizController.updateQuestion)
+ router.put('/update',isAdminAuthenticated,quizController.updateQuestion)
+
+
 
 module.exports =router

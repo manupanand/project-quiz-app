@@ -1,6 +1,6 @@
 const mongoose=require('mongoose')
 
-const userAnswerSchema=mongoose.Schema({
+const userAnswerSchema= new mongoose.Schema({
     userId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'User',

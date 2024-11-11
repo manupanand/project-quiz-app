@@ -24,13 +24,32 @@ const jwtKey=process.env.JWT_SECRET_KEY
 const {validateToken}=require('./src/config/jwt')
 const { databaseConnection } = require('./src/config/db');
 const Question = require('./src/model/question.models');
-const Answer=require('./src/model/useranswer.models');
+const Answer= require('./src/model/useranswer.models');
+
 const {Admin}=require('./src/model/admin.models')
 const {isAdminAuthenticated}=require("./src/middleware/adminAuthenticator.middleware")
 const mongoose = require('mongoose');
+const calculateResult=require('./src/config/result')
 //database connection initialising
 // Initialize database connection
  databaseConnection();
+async function getRes(){
+    let answer=null
+    let question=null
+    const ans =await Answer.find()
+    ans.map((e)=>{answer=e.answers}) 
+    console.log(answer)
+    let ques
+    for (anse of ans){
+         ques=await Question.findById(ans.userId)
+        
+    }
+    // ques.map((e)=>{question=e.question})
+    console.log(ques)
+    
+    
+}
+getRes()
 
 //  app.post('/admin',async (req,res)=>{
 //     const header=req.headers.authorization
@@ -52,36 +71,36 @@ const mongoose = require('mongoose');
 //     })
 //  })
 
-async function addQuestion() {
-    const questionData = {
-        "question": "What is the capital of Thailand?",
-        "answer": ["Tokyo", "Bangkok", "Manila", "Juba "],
-        "correctAnswer": "Bangkok ",
-        "createdBy": new mongoose.Types.ObjectId("6730bebab77f5c5ef06e483d") // Use actual Admin ObjectId here
-    };
+// async function addQuestion() {
+//     const questionData = {
+//         "question": "What is the capital of Thailand?",
+//         "answer": ["Tokyo", "Bangkok", "Manila", "Juba "],
+//         "correctAnswer": "Bangkok ",
+//         "createdBy": new mongoose.Types.ObjectId("6730bebab77f5c5ef06e483d") // Use actual Admin ObjectId here
+//     };
 
-    try {
-        await Question.create(questionData);
-        console.log("Question added successfully!");
-    } catch (error) {
-        console.error("Error adding question:", error);
-    }
-}
+//     try {
+//         await Question.create(questionData);
+//         console.log("Question added successfully!");
+//     } catch (error) {
+//         console.error("Error adding question:", error);
+//     }
+// }
 
-addQuestion();
+// addQuestion();
 
-async function findQuestion(){
-    const allquestion= await Question.find()
-    answer=allquestion[2].answer
-    console.log(allquestion,answer)
+// async function findQuestion(){
+//     const allquestion= await Question.find()
+//     answer=allquestion[2].answer
+//     console.log(allquestion,answer)
 
-}
-findQuestion();
+// }
+// findQuestion();
 
 // async function createAnswerDocument() {
 //     try {
 //         // Assume we are working with a user with _id 'userId' and some questions with _id
-//         const userId = new mongoose.Types.ObjectId("67306af482bf7e71c0409b81"); // Replace with actual userId
+//         const userId = new mongoose.Types.ObjectId("6730be97b77f5c5ef06e483a"); // Replace with actual userId
 
 //         // Prepare the answers for the user (you should have existing question Ids)
 //         const answers = [
@@ -161,7 +180,7 @@ findQuestion();
 // app.length('/',(req,res)=>{
 //     res.render('./src/views/signin.ejs')
 // })
-app.listen(2500)
+// app.listen(2500)
 
 // {
 //     "username":"testsdfsd",
