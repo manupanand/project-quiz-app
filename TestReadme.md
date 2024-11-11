@@ -80,7 +80,7 @@ use token generated for further use
 CRUD-
 delete- http://localhost:2500/admin/question/delete 
 pass in body as shown
-{
+```{
    " id":"id of question",
    "update":{
                 "question":"What is the capital of Estonia?",
@@ -90,9 +90,10 @@ pass in body as shown
 
 
 }
+```
 
 update-put request in body  http://localhost:2500/admin/question/update
-{
+```{
    "id":"question id",
    "update":{
                 "question":"What is the capital of Estonia?",
@@ -102,6 +103,7 @@ update-put request in body  http://localhost:2500/admin/question/update
 
 
 }
+```
 
 sample question  is post request -use bearer token of admin as authorization
 
@@ -109,17 +111,18 @@ sample question  is post request -use bearer token of admin as authorization
 
 Sample token for testing purpose
 
-user-token :eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzMxYjg1ZmU0ZTZjOTkzZGU5MzU2NTMiLCJpYXQiOjE3MzEzMTE3MTF9.YqquIuSsDwhHCDid8cywL2qlnocSDdOOyMqgZi_g-i4
+```user-token :eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzMxYjg1ZmU0ZTZjOTkzZGU5MzU2NTMiLCJpYXQiOjE3MzEzMTE3MTF9.YqquIuSsDwhHCDid8cywL2qlnocSDdOOyMqgZi_g-i4
 
 
 admin-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzMwZDMxNTQwMzMxYmEwNmI1NTg3NjEiLCJpYXQiOjE3MzEyNTMwMTN9.Y_LzgaSqLeBqwvlplAcTzfmd63jR7oRPK5zFZrzHJ9w
+```
 
 
 
 answer submit -http://localhost:2500/user/answer/submit -
 
 use user token 
-
+```
 {
     "userId": "6731b85fe4e6c993de935653",
     "answers": [
@@ -133,3 +136,4 @@ use user token
         }
     ]
 }
+```
