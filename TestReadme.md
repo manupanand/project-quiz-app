@@ -3,11 +3,23 @@
 -use mongodb local- url
 -create .env 
     -write secrets
+        -MONGO_ATLAS="mongodb://localhost:27017/testdb"
+        -MONGO_ATLAS= your mongo atlas url
+        -ENCRYPT_SECRET_KEY=
+        -JWT_SECRET_KEY=
     -test locally in following format
     
 
+### Test routes
+- getting all question for user/admin 
 
-### use similar syntax signup body
+      ```use http://localhost:2500/user/question/all
+             http://localhost:2500/admin/question/all
+
+      use sample bearer token - eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzMxYjg1ZmU0ZTZjOTkzZGU5MzU2NTMiLCJpYXQiOjE3MzEzMTE3MTF9.YqquIuSsDwhHCDid8cywL2qlnocSDdOOyMqgZi_g-i4
+      ```
+### syntax signup body -POST request
+
 ##### Admin body
 ```
 {
@@ -37,6 +49,17 @@
 }
 ```
 
+#### admin body -sign in
+```
+{
+  "username": "user@example.com",
+  "password": "SecurePassword123",
+  
+}
+```
+
+use token generated for further use
+
 ### sample question document
 
 ```
@@ -48,14 +71,14 @@
  
 },
 {
-        "question": "What is the capital of Israel?",
-        "answer": ["London", "Washington", "Sydney", "Tel Aviv"],
-        "correctAnswer": "Tel Aviv",
+  "question": "What is the capital of Israel?",
+  "answer": ["London", "Washington", "Sydney", "Tel Aviv"],
+  "correctAnswer": "Tel Aviv",
         
 }  
 ```
 CRUD-
-delete-admin/question/delete 
+delete- http://localhost:2500/admin/question/delete 
 pass in body as shown
 {
    " id":"id of question",
@@ -68,7 +91,7 @@ pass in body as shown
 
 }
 
-update-put request in body  admin/question/update
+update-put request in body  http://localhost:2500/admin/question/update
 {
    "id":"question id",
    "update":{
@@ -80,19 +103,11 @@ update-put request in body  admin/question/update
 
 }
 
-sample question  is post request -use beare token of admin as header
+sample question  is post request -use bearer token of admin as authorization
 
-answers = [
-            {
-                questionId: mongoose.Types.ObjectId("questionId1"), // Replace with an actual questionId
-                selectedAnswer: "Paris"
-            },
-            {
-                questionId: mongoose.Types.ObjectId("questionId2"), // Replace with another questionId
-                selectedAnswer: "Madrid"
-            }
-        ];
 
+
+Sample token for testing purpose
 
 user-token :eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzMxYjg1ZmU0ZTZjOTkzZGU5MzU2NTMiLCJpYXQiOjE3MzEzMTE3MTF9.YqquIuSsDwhHCDid8cywL2qlnocSDdOOyMqgZi_g-i4
 
@@ -101,9 +116,9 @@ admin-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzMwZDMxNTQwMz
 
 
 
-answer submit -user/answer/submit -
+answer submit -http://localhost:2500/user/answer/submit -
 
-use suer token 
+use user token 
 
 {
     "userId": "6731b85fe4e6c993de935653",

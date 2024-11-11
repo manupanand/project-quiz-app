@@ -1,9 +1,8 @@
 // creating first database of user/admin /signup 
 const logger=require('../config/logger')
-const inputValidate=require('../config/inputValidation')
+const {inputvalidate,signInValidate}=require('../config/inputValidation')
 const {User}=require('../model/user.models')
 const {Admin}=require('../model/admin.models')
-const inputvalidate = require('../config/inputValidation')
 const {encrypt}=require('../config/crypt')
 const {generateToken}=require('../config/jwt')
 require('dotenv').config()

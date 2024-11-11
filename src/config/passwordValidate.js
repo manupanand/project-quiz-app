@@ -19,7 +19,7 @@ async function   validateUserPassword(inputPassword,id,key){
    
 
 }
-async function   validateAdminPassword(inputPassword,id){
+async function   validateAdminPassword(inputPassword,id,key){
     try{const admin=await Admin.findOne(id)
         const adminPassword=decrypt(admin.password,key)
         

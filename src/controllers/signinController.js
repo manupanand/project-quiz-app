@@ -114,8 +114,8 @@ const adminSignIn=async (req,res)=>{
     let userId,token
   try{
         //redis connection
-        await connectRedis();
-        const client =getClient()
+        // await connectRedis();
+        // const client =getClient()
         try{ // Quiz User input validation
             const validate=signInValidate(req.body)
             if(!validate.success){
@@ -137,9 +137,16 @@ const adminSignIn=async (req,res)=>{
         }
       
         try{ // checking if Quiz user exists in database
-            const existingUser= await User.findOne({
+            const existingUser= await Admin.findOne({
                 username:req.body.username
             })
+            console.log(existingUser)
+            if (!existingUser) {
+                logger.error("Admin user not found");
+                return res.status(404).json({
+                    message: "Admin user not found",
+                });
+            }
             userId=existingUser.username
 
             if(existingUser){

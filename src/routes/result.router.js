@@ -9,7 +9,7 @@ const resulController=require('../controllers/resultController')
 router.get('/result',resulController.resultUser)
 
 //get result for all , admin only
-router.get('/allresult',resulController.resultUser)
+// router.get('/allresult',resulController.resultUser)
 
 
 module.exports=router
