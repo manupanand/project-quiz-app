@@ -30,26 +30,51 @@ const {Admin}=require('./src/model/admin.models')
 const {isAdminAuthenticated}=require("./src/middleware/adminAuthenticator.middleware")
 const mongoose = require('mongoose');
 const calculateResult=require('./src/config/result')
+//redis test
+const axios =require('axios')
+const { createClient }=require('redis');
+
+
+try{
+    client.connect(console.log("redis connected"))
+}catch(e){
+    console.log(e)
+}
+app.get('/',async(req,res)=>{
+   try{
+    const key=`authToken:1545926userID`
+    const token=1556655
+    await client.set(key,token,{EX:3600})//1hr
+   }catch(e){
+    console.log("redis error",e)
+   }
+})
+app.get('/token',async(req,res)=>{
+    //get  token for userid
+    const key=`authToken:1545926userID`
+    const token= await client.get(key)
+    console.log("token:",token)
+})
 //database connection initialising
 // Initialize database connection
- databaseConnection();
-async function getRes(){
-    let answer=null
-    let question=null
-    const ans =await Answer.find()
-    ans.map((e)=>{answer=e.answers}) 
-    console.log(answer)
-    let ques
-    for (anse of ans){
-         ques=await Question.findById(ans.userId)
+//  databaseConnection();
+// async function getRes(){
+//     let answer=null
+//     let question=null
+//     const ans =await Answer.find()
+//     ans.map((e)=>{answer=e.answers}) 
+//     console.log(answer)
+//     let ques
+//     for (anse of ans){
+//          ques=await Question.findById(ans.userId)
         
-    }
-    // ques.map((e)=>{question=e.question})
-    console.log(ques)
+//     }
+//     // ques.map((e)=>{question=e.question})
+//     console.log(ques)
     
     
-}
-getRes()
+// }
+// getRes()
 
 //  app.post('/admin',async (req,res)=>{
 //     const header=req.headers.authorization
@@ -180,7 +205,7 @@ getRes()
 // app.length('/',(req,res)=>{
 //     res.render('./src/views/signin.ejs')
 // })
-// app.listen(2500)
+app.listen(2500)
 
 // {
 //     "username":"testsdfsd",

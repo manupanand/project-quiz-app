@@ -28,6 +28,14 @@
   "privilege": false
 }
 ```
+#### user body -sign in
+```
+{
+  "username": "user@example.com",
+  "password": "SecurePassword123",
+  
+}
+```
 
 ### sample question document
 

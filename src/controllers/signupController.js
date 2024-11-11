@@ -17,7 +17,7 @@ const jwtKey=process.env.JWT_SECRET_KEY
 
 const userSignUp=async (req,res)=>{
     //variable
-    let encryptPassword,userId,token
+    let encryptPassword,userId
   try{
     
         try{ // Quiz User input validation
@@ -96,27 +96,11 @@ const userSignUp=async (req,res)=>{
                 error: error.message,
             });
         }
-        try{//create token
-            token=generateToken({userId},jwtKey)
-            if (!token) {
-                return res.status(500).json({
-                    message: "Error generating token Quiz usre",
-                });
-            }
-            logger.info("Token generated successfully");
-
-        }catch(error){
-            logger.error("Error in generating token", error);
-            return res.status(500).json({
-                message: "Error in generating token",
-                error: error.message,
-            });
-            
-        }
+        
         logger.info("Quiz user created successful ")
         res.json({
             message : "Quiz user created succesfully",
-            token:token
+            
         })
         
   }catch(error){
@@ -207,27 +191,11 @@ const adminSignUp= async(req,res)=>{
                 error: error.message,
             });
         }
-        try{//create token
-            token=generateToken({userId},jwtKey)
-            if (!token) {
-                return res.status(500).json({
-                    message: "Error generating token",
-                });
-            }
-            logger.info("Token generated successfully");
-
-        }catch(error){
-            logger.error("Error in generating token", error);
-            return res.status(500).json({
-                message: "Error in generating token",
-                error: error.message,
-            });
-            
-        }
+        
         logger.info("Admin user created successful ")
         res.json({
             message : "Admin user created succesfully",
-            token:token
+            
         })
         
   }catch(error){

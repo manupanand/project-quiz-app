@@ -7,6 +7,11 @@ const signupBody=zod.object({
     firstName:zod.string(),
     lastName:zod.string()
 })
+const signInBody=zod.object({
+    username:zod.string().email(),
+    password:zod.string(),
+    
+})
 const inputvalidate=(input)=>{
 
     try{
@@ -18,4 +23,15 @@ const inputvalidate=(input)=>{
     }
     
 }
-module.exports=inputvalidate
+const signInValidate=(input)=>{
+
+    try{
+        const validate=signInBody.safeParse(input)
+        logger.info("Input valid is returned")
+        return validate
+     }catch(error){
+        logger.error(" Error in input validation",error)
+    }
+    
+}
+module.exports={inputvalidate,signInValidate}
