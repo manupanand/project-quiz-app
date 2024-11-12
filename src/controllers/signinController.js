@@ -140,7 +140,7 @@ const adminSignIn=async (req,res)=>{
             const existingUser= await Admin.findOne({
                 username:req.body.username
             })
-            console.log(existingUser)
+           
             if (!existingUser) {
                 logger.error("Admin user not found");
                 return res.status(404).json({
