@@ -30,6 +30,12 @@ databaseConnection()
 //main Router
  app.use('/',rootRouter)
 
+ app.get('/',(req,res)=>{
+    res.status(200).json({
+        message:"Welcome to quiz app"
+    })
+ })
+
 
 //server 
 app.listen('2500','0.0.0.0',()=>{
