@@ -39,5 +39,7 @@ databaseConnection()
 
 //server 
 app.listen('2500','0.0.0.0',()=>{
-    logger.info("Server started listening to port 2500")
+    try{logger.info("Server started succesfully on port :2500")}catch(error){
+        logger.error("Error in starting server",error)
+    }
 })
