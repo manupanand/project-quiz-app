@@ -13,10 +13,13 @@ COPY package*.json ./
 #RUN go mod tidy
 #install dependencies-commands to run to build applications dont start application
 RUN npm install
+#RUN npx prisma generate
 
 
 # Copy files - . mean all files, . mean to working directory
 COPY  . .
+#Environment variables
+
 
 # Build the Go program
 #RUN go build -o main .
