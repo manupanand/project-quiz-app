@@ -67,6 +67,19 @@ npm run server
 
 ```
 
+## Docker build
+```
+sudo docker build -t quiz-app .
+
+```
+
+## Run docker image
+
+```
+    sudo docker run -p 2500:2500 quiz-app
+    
+```
+
 This will launch the application at http://localhost:2500 by default.
 
 Usage
