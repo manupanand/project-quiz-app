@@ -1,0 +1,34 @@
+version: '3.8' # Updated version
+
+services:
+  mongodb-quiz:
+    image: mongodb/mongodb-community-server:6.0.15-ubi8
+    container_name: mongodb-quiz
+    volumes:
+      - mongodb_data:/data/db # Corrected volume path
+    networks:
+      - app_network
+
+  quiz-app:
+  # to build from current folder
+  # build: .
+    image: quiz-app
+    container_name: quiz-app
+    depends_on:
+      - mongodb-quiz # Corrected service name
+    ports:
+      - "2500:2500"
+    environment:
+      MONGO_LOCAL: "mongodb://mongodb-quiz:27017"
+    networks:
+      - app_network
+
+# Volumes for database
+volumes:
+  mongodb_data:
+
+# Network definition
+networks:
+  app_network:
+    driver: bridge
+#by default even if network is not given , both containers are under same service

@@ -18,7 +18,10 @@ RUN npm install
 
 # Copy files - . mean all files, . mean to working directory
 COPY  . .
-#Environment variables
+
+#RUN npm run build
+
+
 
 
 # Build the Go program
