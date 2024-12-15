@@ -48,7 +48,7 @@ cd project-quiz-app
 npm install
 ```
 ### Set up environment variables:
- Create a .env file in the root directory and configure the following:
+ Create a .env file in the ./config/ directory and configure the following or use .env.example:
 
 ``` 
 -MONGO_ATLAS="mongodb://localhost:27017/testdb"
