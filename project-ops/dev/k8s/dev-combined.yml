@@ -16,6 +16,15 @@ spec:
     spec:
       containers:
       - name: quiz-app-container
-        image: manupanand/quiz-app:1.0 # Replace with your Docker Hub username and image tag
+        image: manupanand/quiz-app:2.0 # Replace with your Docker Hub username and image tag
         ports:
         - containerPort: 2500
+---
+apiVersion: apps/v1
+kind: Services
+metadata:
+  name: quiz-app-service
+
+---
+apiVersion: apps/v1
+kind: Secrets
